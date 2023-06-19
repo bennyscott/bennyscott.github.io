@@ -1,0 +1,66 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:skyblue
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+
+
+table, th, td {
+    border: 1px solid black;
+    border-style: inset;
+  }
+
+  @keyframes test {
+    from {background-color:skyblue;}
+    to {background-color: blueviolet;}
+    
+  }
+  th {
+    
+    background-color:skyblue;
+    animation-name: test;
+    animation-duration: 6s;
+  }
+td:hover
+{
+background-color: lightgreen;
+}
+
+
+.p1 {
+  /* the height */
+  --h: 1.2em;
+
+  line-height: var(--h);
+  color: #0000;
+  text-shadow: 
+    0 var(--_i, var(--h)) #fff,
+    0 0 rgb(0 0 0 / calc(var(--_i, 1) * 100%) );
+  background: 
+    linear-gradient(#1095c1 0 0) 
+    bottom/100% calc(100% - var(--_i, 1) * 100%) no-repeat;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.p1:hover {
+  --_i: 0;
+}
+nav:hover li a  {
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
