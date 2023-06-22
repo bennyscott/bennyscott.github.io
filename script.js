@@ -1,34 +1,21 @@
-var config = {
-    apiKey: "AIzaSyCeRIy2_EdJLUJyziZISx-GDHuNorOeUE8",
-    authDomain: "hit-counter-7bb0f.firebaseapp.com",
-    databaseURL: "https://hit-counter-7bb0f.firebaseio.com",
-    projectId: "hit-counter-7bb0f",
-    storageBucket: "hit-counter-7bb0f.appspot.com",
-    messagingSenderId: "600917152685"
-  };
-  var app = firebase.initializeApp(config);
-  var db = app.database();
-  var hitsRef = db.ref('hits');
-  var hits = document.querySelector("#hits");
-  
+var counterContainer = document.querySelector(".website-counter");
+var resetButton = document.querySelector("#reset");
+var visitCount = localStorage.getItem("page_view");
 
-  hitsRef.on('value', function(snapshot) {
-  incrementHits(snapshot.val().numHits);
-  
-  hitsRef.once('value').then(function(snapshot) {
-    incrementHits(snapshot.val().numHits);
-  });
-  
-  function incrementHits(curValue) {
-    var newValue = curValue + 1;
-    hits.innerHTML = newValue;
-    setNewHitsinDB(newValue);
-  }
-  
-  function setNewHitsinDB(value) {
-    hitsRef.set({
-      numHits: value
-    });
-  }
+// Check if page_view entry is present
+if (visitCount) {
+  visitCount = Number(visitCount) + 1;
+  localStorage.setItem("page_view", visitCount);
+} else {
+  visitCount = 1;
+  localStorage.setItem("page_view", 1);
+}
+counterContainer.innerHTML = visitCount;
 
+// Adding onClick event listener
+resetButton.addEventListener("click", () => {
+  visitCount = 1;
+  localStorage.setItem("page_view", 1);
+  counterContainer.innerHTML = visitCount;
+});
 
