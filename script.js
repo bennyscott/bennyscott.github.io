@@ -12,6 +12,9 @@ var config = {
   var hits = document.querySelector("#hits");
   
 
+  hitsRef.on('value', function(snapshot) {
+  incrementHits(snapshot.val().numHits);
+  
   hitsRef.once('value').then(function(snapshot) {
     incrementHits(snapshot.val().numHits);
   });
